@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suicide Attempt Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, black, red); /* Linear gradient from black to red */
+            color: white; /* Make text readable on the background */
+            padding: 0;
+            margin: 0;
+            height: 100vh; /* Full viewport height */
+        }
+
+        h2 {
+            color: #fff; /* Set header text color to white for contrast */
+            margin-top: 20px;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for the form */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Suicide Attempt Detection</h2>
+    <form action="/predict" method="post">
+        <textarea name="text" placeholder="Enter text here..." required></textarea>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

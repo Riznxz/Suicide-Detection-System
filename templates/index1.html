@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suicide Attempt Prediction System</title>
+    <!-- <link rel="icon" href="/static/img/download (4).ico"> -->
+    <style>
+        /* General reset and basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;  /* Lighter background color */
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #3f6c92;  /* Calm blue for the theme */
+            color: white;
+        }
+
+        nav .logo h1 {
+            font-size: 24px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+
+        nav .nav-links a:hover {
+            background-color: #285477;  /* Darker shade for hover effect */
+            border-radius: 5px;
+        }
+
+        /* Hero Section with Image and Hover Effect */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+            background-color: #111;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-card {
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire section */
+        }
+
+        /* Small Card Layouts Below Hero */
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px 20px;
+            gap: 20px;
+        }
+
+        .small-card {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 28%;  /* Reduced card size */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Reduced padding */
+            text-align: center;
+            transition: all 0.3s ease-in-out;  /* Added transition for smooth effect */
+            transform: perspective(1000px) rotateY(0deg);  /* Initial state for 3D effect */
+        }
+
+        .small-card:hover {
+            background-color: #f9d804;
+            color: white;
+            transform: perspective(1000px) rotateY(15deg);  /* 3D hover effect */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);  /* Slightly increased shadow on hover */
+        }
+
+        .small-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .small-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .button {
+            background-color: #0ddc02;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #e7ef09;
+        }
+
+        /* New small cards for features section */
+        .feature-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 50px 20px;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 22%;  /* Smaller cards */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .feature-card:hover {
+            background-color: #6e1b92;
+            color: white;
+            transform: perspective(1000px) rotateY(15deg);  /* 3D hover effect */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h4 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #3f6c92;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Style for social media icons */
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #5c8dff;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<nav>
+    <div class="logo">
+      <img src="/static/img/logo1.jpg" alt="Logo" style="width: 60px;height: 60px;border-radius: 30px;">
+
+    </div>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="login">Login</a>
+        <a href="#about-us">About Us</a>
+    </div>
+</nav>
+
+<!-- Hero Section with Image -->
+<section id="home" class="hero">
+    <div class="hero-card" id="image-slider">
+        <!-- Images for the slider -->
+        <img src="{{ url_for('static', filename='img/suice2.avif') }}" alt="Mental Health Awareness 1" class="slide">
+        <img src="{{ url_for('static', filename='img/suice.jpg') }}" alt="Mental Health Awareness 2" class="slide">
+        <img src="{{ url_for('static', filename='img/imge.jpg') }}" alt="Mental Health Awareness 3" class="slide">
+        <img src="{{ url_for('static', filename='img/image3.jpg') }}" alt="Mental Health Awareness 4" class="slide">
+    </div>
+</section>
+
+<!-- Cards Below Hero Section (Replaced About Us) -->
+<section class="card-container">
+    <div class="small-card">
+        <h3>Real-time Suicide Attempt Prediction</h3>
+        <p>Our system analyzes social media content in real-time to predict the risk of suicide attempts. We aim to provide early warnings and support for individuals in need.</p>
+        <a href="#home" class="button">Learn More</a>
+    </div>
+    <div class="small-card">
+        <h3>AI-Powered Analysis</h3>
+        <p>By leveraging AI and natural language processing, our system can identify distress signals in social media posts and conversations to predict potential mental health crises.</p>
+        <a href="#home" class="button">Learn More</a>
+    </div>
+    <div class="small-card">
+        <h3>Helping to Save Lives</h3>
+        <p>Through timely alerts, we can connect at-risk individuals with mental health professionals, providing the necessary support before it's too late.</p>
+        <a href="#home" class="button">Learn More</a>
+    </div>
+</section>
+
+<!-- New Feature Cards Section -->
+<section class="feature-container">
+    <div class="feature-card">
+        <h4>Real-Time Data Processing</h4>
+        <p>Our system processes social media data in real-time, ensuring immediate response to any alarming posts.</p>
+    </div>
+    <div class="feature-card">
+        <h4>AI-Driven Insights</h4>
+        <p>Advanced AI algorithms provide insightful predictions, helping professionals make timely interventions.</p>
+    </div>
+    <div class="feature-card">
+        <h4>Secure & Confidential</h4>
+        <p>We prioritize privacy and confidentiality, ensuring that sensitive data is handled with the utmost care and security.</p>
+    </div>
+    <div class="feature-card">
+        <h4>Community Support</h4>
+        <p>Our platform connects individuals with mental health support groups and resources, creating a network of care.</p>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer id="about-us">
+    <p>&copy; 2025 Suicide Prevention System. All Rights Reserved.</p>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Optional Contact Link (Email) -->
+    <p><i class="fas fa-envelope"></i> Contact us: <a href="mailto:info@suicideprevention.com">info@suicideprevention.com</a></p>
+</footer>
+
+<script>
+    // JavaScript to handle the image slider
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function changeSlide() {
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        // Show the current slide
+        currentIndex++;
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0; // Stop at the last image
+        }
+
+        slides[currentIndex].style.display = 'block'; // Show current slide
+    }
+
+    // Initially hide all slides and show the first one
+    slides.forEach(slide => {
+        slide.style.display = 'none';
+    });
+    slides[0].style.display = 'block';
+
+    // Change the slide every 3 seconds
+    setInterval(changeSlide, 3000);
+</script>
+
+</body>
+</html>

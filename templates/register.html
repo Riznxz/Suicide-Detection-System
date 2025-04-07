@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- <link rel="icon" href="/static/img/download (3).ico"> -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4e73df, #1cc88a), url('https://via.placeholder.com/1600x900');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Fade-in Animation for Background */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Form Container */
+        #user-form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 480px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #user-form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1cc88a;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .form-item {
+            margin-bottom: 25px;
+        }
+
+        .form-item label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #555;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #1cc88a;
+            box-shadow: 0 0 8px rgba(28, 200, 138, 0.5);
+        }
+
+        /* Error Message */
+        #error-msg {
+            color: #e74a3b;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Submit Button */
+        #form-submit {
+            background-color: #1cc88a;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #form-submit:hover {
+            background-color: #17a673;
+            transform: scale(1.05);
+        }
+
+        /* Link Styles */
+        .text-link {
+            color: #1cc88a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .text-link:hover {
+            color: #17a673;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            #user-form {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .form-input {
+                font-size: 14px;
+            }
+
+            #form-submit {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Registration Form -->
+    <form id="user-form" action="/register" method="post">
+        <h2>Register Your Account</h2>
+
+        <div class="form-item">
+            <label for="register-username">Username:</label>
+            <input id="register-username" class="form-input" type="text" name="username" required>
+        </div>
+
+        <div class="form-item">
+            <label for="register-email">Email:</label>
+            <input id="register-email" class="form-input" type="email" name="email" required>
+        </div>
+
+        <div class="form-item">
+            <label for="register-password">Password:</label>
+            <input id="register-password" class="form-input" type="password" name="password" required>
+        </div>
+
+        <div class="form-item">
+            <label for="register-confirm-password">Confirm Password:</label>
+            <input id="register-confirm-password" class="form-input" type="password" name="confirm-password" required>
+        </div>
+
+        {% if error %}
+        <p id="error-msg">{{error}}</p>
+        {% endif %}
+
+        <input id="form-submit" type="submit" value="Register">
+
+        <div id="switch-form" style="text-align: center; margin-top: 20px; color: #333;">
+            <p>Already have an account? <a class="text-link" href="/login">Login</a></p>
+        </div>
+    </form>
+
+</body>
+
+</html>

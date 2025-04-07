@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to top, #ff4b2b, #ff416c); /* Gradient from bottom to top */
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 60%;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-10px); /* Floating effect */
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-card h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .result-card p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .prediction {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .prediction.suicide {
+            color: #ff4b2b; /* Red color for "suicide" prediction */
+        }
+
+        .prediction.other {
+            color: #ffde00; /* Yellow color for other predictions */
+        }
+
+        a {
+            display: inline-block;
+            background-color: #00bfae;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #008f82;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="result-card">
+        <h2>Prediction Result</h2>
+        <p>The model predicts:</p>
+        <p class="prediction {{ 'suicide' if prediction == 'suicide' else 'other' }}">{{ prediction }}</p>
+        <a href="/">Go Back</a>
+    </div>
+
+</body>
+</html>
